@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkeletonCollectionDelegate: NSObject {
+ @objc open class SkeletonCollectionDelegate: NSObject {
     
     weak var originalTableViewDelegate: SkeletonTableViewDelegate?
     weak var originalCollectionViewDelegate: SkeletonCollectionViewDelegate?
