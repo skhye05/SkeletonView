@@ -10,7 +10,7 @@ import UIKit
 
 public typealias ReusableCellIdentifier = String
 
-@objc open class SkeletonCollectionDataSource: NSObject {
+class SkeletonCollectionDataSource: NSObject {
     
     weak var originalTableViewDataSource: SkeletonTableViewDataSource?
     weak var originalCollectionViewDataSource: SkeletonCollectionViewDataSource?
