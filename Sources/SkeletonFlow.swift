@@ -9,21 +9,21 @@ protocol SkeletonFlowDelegate {
     func didHideSkeletons(withRootView rootView: UIView)
 }
 
-@objc open class SkeletonFlowHandler: SkeletonFlowDelegate {
+class SkeletonFlowHandler: SkeletonFlowDelegate {
 
-    open func willBeginShowingSkeletons(withRootView rootView: UIView) {
+   func willBeginShowingSkeletons(withRootView rootView: UIView) {
         rootView.addAppNotificationsObservers()
     }
 
-    open func didShowSkeletons(withRootView rootView: UIView) {
+   func didShowSkeletons(withRootView rootView: UIView) {
         printSkeletonHierarchy(in: rootView)
     }
     
-    open func willBeginHidingSkeletons(withRootView rootView: UIView) {
+   func willBeginHidingSkeletons(withRootView rootView: UIView) {
         rootView.removeAppNoticationsObserver()
     }
 
-    open func didHideSkeletons(withRootView rootView: UIView) {
+   func didHideSkeletons(withRootView rootView: UIView) {
         rootView.flowDelegate = nil
     }
 }
