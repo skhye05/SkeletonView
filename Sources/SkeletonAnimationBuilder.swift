@@ -10,7 +10,7 @@ import UIKit
 
 typealias GradientAnimationPoint = (from: CGPoint, to: CGPoint)
 
-public enum GradientDirection {
+ @objc open public enum GradientDirection {
     case leftRight
     case rightLeft
     case topBottom
@@ -59,7 +59,7 @@ public enum GradientDirection {
     // codebeat:enable[ABC]
 }
 
-public class SkeletonAnimationBuilder {
+ @objc open public class SkeletonAnimationBuilder {
     
     public init() {
     }
