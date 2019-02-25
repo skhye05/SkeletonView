@@ -4,35 +4,35 @@ import UIKit
 
 @objc public extension UIView {
     
-     @objc open func showSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor) {
+     open func showSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor) {
         showSkeleton(withType: .solid, usingColors: [color])
     }
     
-     @objc open func showGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient) {
+     open func showGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient) {
         showSkeleton(withType: .gradient, usingColors: gradient.colors)
     }
     
-     @objc open func showAnimatedSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor, animation: SkeletonLayerAnimation? = nil) {
+     open func showAnimatedSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor, animation: SkeletonLayerAnimation? = nil) {
         showSkeleton(withType: .solid, usingColors: [color], animated: true, animation: animation)
     }
     
-     @objc open func showAnimatedGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient, animation: SkeletonLayerAnimation? = nil) {
+     open func showAnimatedGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient, animation: SkeletonLayerAnimation? = nil) {
         showSkeleton(withType: .gradient, usingColors: gradient.colors, animated: true, animation: animation)
     }
     
-     @objc open func hideSkeleton(reloadDataAfter reload: Bool = true) {
+     open func hideSkeleton(reloadDataAfter reload: Bool = true) {
         flowDelegate?.willBeginHidingSkeletons(withRootView: self)
         recursiveHideSkeleton(reloadDataAfter: reload, root: self)
     }
     
-     @objc open func startSkeletonAnimation(_ anim: SkeletonLayerAnimation? = nil) {
+     open func startSkeletonAnimation(_ anim: SkeletonLayerAnimation? = nil) {
         skeletonIsAnimated = true
         subviewsSkeletonables.recursiveSearch(leafBlock: startSkeletonLayerAnimationBlock(anim)) { subview in
             subview.startSkeletonAnimation(anim)
         }
     }
 
-     @objc open func stopSkeletonAnimation() {
+     open func stopSkeletonAnimation() {
         skeletonIsAnimated = false
         subviewsSkeletonables.recursiveSearch(leafBlock: stopSkeletonLayerAnimationBlock) { subview in
             subview.stopSkeletonAnimation()
@@ -42,7 +42,7 @@ import UIKit
 
 extension UIView {
     
-     @objc open func showSkeleton(withType type: SkeletonType = .solid, usingColors colors: [UIColor], animated: Bool = false, animation: SkeletonLayerAnimation? = nil) {
+     open func showSkeleton(withType type: SkeletonType = .solid, usingColors colors: [UIColor], animated: Bool = false, animation: SkeletonLayerAnimation? = nil) {
         skeletonIsAnimated = animated
         flowDelegate = SkeletonFlowHandler()
         flowDelegate?.willBeginShowingSkeletons(withRootView: self)
@@ -98,7 +98,7 @@ extension UIView {
 
 extension UIView {
     
-     @objc open func addSkeletonLayer(withType type: SkeletonType, usingColors colors: [UIColor], gradientDirection direction: GradientDirection? = nil, animated: Bool, animation: SkeletonLayerAnimation? = nil) {
+     open func addSkeletonLayer(withType type: SkeletonType, usingColors colors: [UIColor], gradientDirection direction: GradientDirection? = nil, animated: Bool, animation: SkeletonLayerAnimation? = nil) {
         guard let skeletonLayer = SkeletonLayerBuilder()
             .setSkeletonType(type)
             .addColors(colors)
@@ -112,7 +112,7 @@ extension UIView {
         status = .on
     }
     
-     @objc open func removeSkeletonLayer() {
+     open func removeSkeletonLayer() {
         guard isSkeletonActive,
             let layer = skeletonLayer else { return }
         layer.stopAnimation()
